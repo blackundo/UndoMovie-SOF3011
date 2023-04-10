@@ -1,5 +1,8 @@
 package edu.poly.asmjava4final.filter;
 
+import edu.poly.asmjava4final.dto.UserDTO;
+import edu.poly.asmjava4final.utils.SessionUtil;
+
 import javax.servlet.*;
 import javax.servlet.annotation.*;
 import javax.servlet.http.HttpServletRequest;
@@ -19,29 +22,29 @@ public class AuthorizationFilter implements Filter {
     }
 
     @Override
-    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws ServletException, IOException {
-//        HttpServletRequest request = (HttpServletRequest) servletRequest;
-//        HttpServletResponse response = (HttpServletResponse) servletRespone;
-//        String url = request.getRequestURI();
-//        if (url.startsWith("/admin")) {
-//            UserDTO user = (UserDTO) SessionUtil.getInstance().getValue(request, "USER");
-//            if (user != null && user.isStatus()) {
-//                if (user.isRole()) {
-//                    filterChain.doFilter(servletRequest, servletRespone);
-//                } else {
-//                    response.sendRedirect(
-//                            request.getContextPath() + "/login?message=" + "Not permission" + "&alert=warning");
-//                }
-//            } else {
-//                response.sendRedirect(request.getContextPath() + "/login?&message=" + "Not login" + "&alert=warning");
-//            }
-////		} else if (url.startsWith("/login") || url.startsWith("/register")) {
-////			UserDTO user = (UserDTO) SessionUtil.getInstance().getValue(request, "USER");
-////			if (user != null) {
-////				response.sendRedirect(request.getContextPath() + "/home");
-////			}
-//        } else {
-//            chain.doFilter(servletRequest, servletRespone);
-//        }
+    public void doFilter(ServletRequest servletRequest, ServletResponse servletRespone, FilterChain chain) throws ServletException, IOException {
+        HttpServletRequest request = (HttpServletRequest) servletRequest;
+        HttpServletResponse response = (HttpServletResponse) servletRespone;
+        String url = request.getRequestURI();
+        if (url.startsWith("/admin")) {
+            UserDTO user = (UserDTO) SessionUtil.getInstance().getValue(request, "USER");
+            if (user != null && user.isStatus()) {
+                if (user.isRole()) {
+                    chain.doFilter(servletRequest, servletRespone);
+                } else {
+                    response.sendRedirect(
+                            request.getContextPath() + "/login?message=" + "Not permission" + "&alert=warning");
+                }
+            } else {
+                response.sendRedirect(request.getContextPath() + "/login?&message=" + "Not login" + "&alert=warning");
+            }
+//		} else if (url.startsWith("/login") || url.startsWith("/register")) {
+//			UserDTO user = (UserDTO) SessionUtil.getInstance().getValue(request, "USER");
+//			if (user != null) {
+//				response.sendRedirect(request.getContextPath() + "/home");
+//			}
+        } else {
+            chain.doFilter(servletRequest, servletRespone);
+        }
     }
 }
