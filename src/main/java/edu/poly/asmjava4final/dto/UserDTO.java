@@ -1,37 +1,20 @@
-package edu.poly.asmjava4final.entity;
+package edu.poly.asmjava4final.dto;
 
-import javax.persistence.*;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-@Entity
-@Table(name = "users")
-public class UserEntity extends BaseEntity{
-
-    @Column(name = "username")
+public class UserDTO extends AbstractDTO<UserDTO>{
     private String username;
-
-    @Column(name = "password")
     private String password;
-
-    @Column(name = "fullname")
     private String fullname;
-
-    @Column(name = "email")
     private String email;
-
-    @Column(name = "role")
     private boolean role;
-
-    @Column(name = "status")
     private boolean status;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name = "favorites", joinColumns = @JoinColumn(name = "userid"), inverseJoinColumns = @JoinColumn(name = "movieid"))
-    private Set<MovieEntity> movies = new HashSet<>();
-
-    @Column(name = "verify")
     private String verify;
+    private Set<MovieDTO> movies = new HashSet<>();
+    private String[] idsMovie;
+    private String remember;
 
     public String getUsername() {
         return username;
@@ -89,18 +72,34 @@ public class UserEntity extends BaseEntity{
         this.verify = verify;
     }
 
-
-    public Set<MovieEntity> getMovies() {
+    public Set<MovieDTO> getMovies() {
         return movies;
     }
 
-    public void setMovies(Set<MovieEntity> movies) {
+    public void setMovies(Set<MovieDTO> movies) {
         this.movies = movies;
+    }
+
+    public String[] getIdsMovie() {
+        return idsMovie;
+    }
+
+    public void setIdsMovie(String[] idsMovie) {
+        this.idsMovie = idsMovie;
+    }
+
+    public String getRemember() {
+        return remember;
+    }
+
+    public void setRemember(String remember) {
+        this.remember = remember;
     }
 
     @Override
     public String toString() {
-        return "UserEntity [username=" + username + ", password=" + password + ", fullname=" + fullname + ", email="
-                + email + ", role=" + role + ", status=" + status + ", movies=" + movies + ", verify=" + verify + "]";
+        return "UserDTO [username=" + username + ", password=" + password + ", fullname=" + fullname + ", email="
+                + email + ", role=" + role + ", status=" + status + ", verify=" + verify + ", movies=" + movies
+                + ", idsMovie=" + Arrays.toString(idsMovie) + ", remember=" + remember + "]";
     }
 }
