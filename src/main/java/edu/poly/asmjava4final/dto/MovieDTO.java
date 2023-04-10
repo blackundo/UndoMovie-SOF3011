@@ -12,6 +12,8 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
     private Date date;
     private Integer viewCount;
     private Integer likeCount;
+
+    private String poster;
     private Set<CategoryDTO> categories = new HashSet<CategoryDTO>();
     private Set<UserDTO> users = new HashSet<UserDTO>();
     private String[] idsCategory;
@@ -32,7 +34,21 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
         this.description = description;
     }
 
+    public Date getDate() {
+        return date;
+    }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     public Integer getViewCount() {
         return viewCount;
@@ -82,7 +98,7 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
     @Override
     public String toString() {
         return "MovieDTO [title=" + title + ", description=" + description + ", date="
-                + date + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", categories=" + categories + ", users=" + users
+                + date + ", poster=" + poster + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", categories=" + categories + ", users=" + users
                 + Arrays.toString(idsCategory) + "]";
     }
 }
