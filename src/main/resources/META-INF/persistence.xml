@@ -3,13 +3,17 @@
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
-    <persistence-unit name="asm">
+    <persistence-unit name="asm4">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=sof3011_java4_assignment" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=java4_asm" />
             <property name="javax.persistence.jdbc.user" value="sa" />
             <property name="javax.persistence.jdbc.password" value="khanhuy123" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+<!--            <property name="javax.persistence.schema-generation.database.action"-->
+<!--                      value="drop-and-create" />-->
         </properties>
     </persistence-unit>
 </persistence>

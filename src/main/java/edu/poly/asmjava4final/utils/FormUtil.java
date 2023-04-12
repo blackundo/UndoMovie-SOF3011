@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 
 public class FormUtil {
+    @SuppressWarnings({ "deprecation" })
     public static  <T> T toModel(Class<T> clazz, HttpServletRequest request){
         T object = null;
         try{

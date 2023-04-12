@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="/commons/tablib.jsp"%>
+<%@ include file="/commons/taglib.jsp"%>
 <html>
 <head>
     <title>Title</title>
@@ -28,6 +28,8 @@
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/script.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/video_frames.js"></script>
+    <!-- SweetAlert2 -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
