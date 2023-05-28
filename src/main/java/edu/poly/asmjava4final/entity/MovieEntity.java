@@ -15,6 +15,9 @@ public class MovieEntity extends BaseEntity{
     @Column(name = "description")
     private String description;
 
+    @Column(name = "link")
+    private String link;
+
     @Column(name = "date")
     private Date date;
 
@@ -36,6 +39,19 @@ public class MovieEntity extends BaseEntity{
     private Set<UserEntity> users = new HashSet<>();
     @Column(name = "status")
     private boolean status;
+
+
+    public String getLink() {
+        return link;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public Date getDate() {
         return date;
@@ -114,7 +130,7 @@ public class MovieEntity extends BaseEntity{
 
     @Override
     public String toString() {
-        return "MovieEntity [title=" + title + ", description=" + description + ", date=" + date + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", poster=" + poster + ", categories=" + categories
+        return "MovieEntity [title=" + title + ", description=" + description + ", link=" + link + ", date=" + date + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", poster=" + poster + ", categories=" + categories
                 + ", users=" + users + "]";
     }
 }

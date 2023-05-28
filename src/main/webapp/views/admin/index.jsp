@@ -10,6 +10,6 @@
     <i class='bx bx-menu'></i> <span class="text">Dashboard</span>
 </div>
 <div class="container bg-light p-2">
-	Summary
+	Thống kê
 </div>
 </body>

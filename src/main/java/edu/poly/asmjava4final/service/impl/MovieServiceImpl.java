@@ -28,8 +28,24 @@ public class MovieServiceImpl implements MovieService {
     }
 
     @Override
+    public List<MovieDTO> findAll(int pageNumber, int pageSize) {
+        List<MovieDTO> dtos = new ArrayList<MovieDTO>();
+        List<MovieEntity> entities = movieRepository.findAll();
+        for (MovieEntity item : entities) {
+            MovieDTO MovieDTO = MovieConverter.toAllDTO(item);
+            dtos.add(MovieDTO);
+        }
+        return dtos;
+    }
+
+    @Override
     public MovieDTO findOne(Long id) {
         return MovieConverter.toAllDTO(movieRepository.findOne(id));
+    }
+
+    @Override
+    public MovieDTO findOneByLink(String link) {
+        return MovieConverter.toAllDTO(movieRepository.findOneByLink(link));
     }
 
     @Override

@@ -6,7 +6,9 @@ import java.util.List;
 
 public interface MovieRepository {
     List<MovieEntity> findAll();
+    List<MovieEntity> findAll(int pageNumber, int pageSize);
     MovieEntity findOne(Long id);
+    MovieEntity findOneByLink(String link);
     Long save(MovieEntity entity);
     void update(MovieEntity entity);
     void delete(Long id);

@@ -1,6 +1,7 @@
 package edu.poly.asmjava4final.repository.impl;
 
 import edu.poly.asmjava4final.entity.MovieEntity;
+import edu.poly.asmjava4final.entity.UserEntity;
 import edu.poly.asmjava4final.repository.MovieRepository;
 import edu.poly.asmjava4final.utils.JpaUtil;
 
@@ -29,11 +30,48 @@ public class MovieRepositoryImpl implements MovieRepository {
     }
 
     @Override
+    public List<MovieEntity> findAll(int pageNumber, int pageSize) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String query = "SELECT t FROM MovieEntity t";
+
+        TypedQuery<MovieEntity> tq = em.createQuery(query, MovieEntity.class);
+        tq.setFirstResult((pageNumber - 1) * pageSize);
+        tq.setMaxResults(pageSize);
+        List<MovieEntity> list = new ArrayList<MovieEntity>();
+        try {
+            list = tq.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return list;
+    }
+
+    @Override
     public MovieEntity findOne(Long id) {
         EntityManager em = JpaUtil.getEntityManager();
         MovieEntity entity = new MovieEntity();
         try {
             entity = em.find(MovieEntity.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            em.close();
+        }
+        return entity;
+    }
+
+    @Override
+    public MovieEntity findOneByLink(String link) {
+        EntityManager em = JpaUtil.getEntityManager();
+        String query = "SELECT t FROM MovieEntity t WHERE t.link IN (:link)";
+
+        MovieEntity entity = new MovieEntity();
+        TypedQuery<MovieEntity> tq = em.createQuery(query, MovieEntity.class);
+        tq.setParameter("link", link);
+        try {
+            entity = tq.getSingleResult();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

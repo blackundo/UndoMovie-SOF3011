@@ -4,6 +4,7 @@
     <excludes>
         <pattern>/api*</pattern>
         <pattern>/home*</pattern>
+        <pattern>/watch*</pattern>
     </excludes>
     
     <!-- apply Sitemesh default template -->
@@ -12,8 +13,8 @@
         <pattern>/admin*</pattern>
     </decorator>
     
-    <decorator name="web" page="web.jsp">
-        <pattern>/*</pattern>
-    </decorator>
+<!--    <decorator name="web" page="web.jsp">-->
+<!--        <pattern>/*</pattern>-->
+<!--    </decorator>-->
 
 </decorators>

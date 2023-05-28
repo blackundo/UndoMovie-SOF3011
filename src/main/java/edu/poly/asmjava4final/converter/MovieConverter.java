@@ -13,6 +13,7 @@ public class MovieConverter {
         result.setViewCount(entity.getViewCount());
         result.setLikeCount(entity.getLikeCount());
         result.setPoster(entity.getPoster());
+        result.setLink(entity.getLink());
         return result;
     }
 
@@ -24,6 +25,8 @@ public class MovieConverter {
         result.setDate(dto.getDate());
         result.setViewCount(dto.getViewCount());
         result.setLikeCount(dto.getLikeCount());
+        result.setPoster(dto.getPoster());
+        result.setLink(dto.getLink());
         return result;
     }
 

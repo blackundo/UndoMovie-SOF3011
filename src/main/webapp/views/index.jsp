@@ -32,7 +32,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
+<body ${param.message != null ? 'class="modal-open" style="padding-right: 10px;"' : ''}>
 <header class="navbar-fixed-top">
     <%@include file="header.jsp"%>
 </header>
@@ -58,78 +58,91 @@
             <div class="videos-latest-list row pt_timeline_vids ">
                 <div class="videos-latest-list row">
 
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="ctisp3ru7kk"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/ctisp3ru7kk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD_1LqrYP_wArIhM2hQMYxgMx0sPg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Cách Hack Blox Fruits 18"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="ctisp3ru7kk"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/a_MPYVrx5-w/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Hack Doors Hotel Roblox Mới Nhất"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="ObRxp5DvAP4"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/ObRxp5DvAP4/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Hướng dẫn hack Last Day On Earth Mod Menu"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="dtpiNBwudVc"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/dtpiNBwudVc/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Cach Hack 8 Ball Pool"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="Gt6iUW5TDRo"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/Gt6iUW5TDRo/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Cách Hack Tình Kiếm 3d Ver 1.0..64"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="X9nco9dodC8"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/X9nco9dodC8/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Menu Mod Subway sufer"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="UKXwIXp7V8Q"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/UKXwIXp7V8Q/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Mod Minecarf trên điên thoại"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
-                    <jsp:include page="video.jsp">
-                        <jsp:param name="id" value="lGzH8YxFOJE"/>
-                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/lGzH8YxFOJE/maxresdefault.jpg"/>
-                        <jsp:param name="duration" value="23:22"/>
-                        <jsp:param name="title" value="Hack hide Online Mod mEnu"/>
-                        <jsp:param name="user" value="Black Undo"/>
-                        <jsp:param name="view" value="330,534"/>
-                        <jsp:param name="date" value="26/11/2003"/>
-                    </jsp:include>
+                    <c:forEach items="${movies}" var="i">
+                        <jsp:include page="video.jsp">
+                            <jsp:param name="id" value="${i.link}"/>
+                            <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/${i.link}/hqdefault.jpg"/>
+                            <jsp:param name="duration" value="23:22"/>
+                            <jsp:param name="title" value="${i.title}"/>
+                            <jsp:param name="user" value="Admin"/>
+                            <jsp:param name="view" value="${i.viewCount}"/>
+                            <jsp:param name="date" value="${i.date}"/>
+                        </jsp:include>
+                    </c:forEach>
+
+
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="ctisp3ru7kk"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/ctisp3ru7kk/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLD_1LqrYP_wArIhM2hQMYxgMx0sPg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Cách Hack Blox Fruits 18"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="ctisp3ru7kk"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/a_MPYVrx5-w/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Hack Doors Hotel Roblox Mới Nhất"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="ObRxp5DvAP4"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/ObRxp5DvAP4/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Hướng dẫn hack Last Day On Earth Mod Menu"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="dtpiNBwudVc"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/dtpiNBwudVc/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Cach Hack 8 Ball Pool"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="Gt6iUW5TDRo"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/Gt6iUW5TDRo/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Cách Hack Tình Kiếm 3d Ver 1.0..64"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="X9nco9dodC8"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/X9nco9dodC8/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Menu Mod Subway sufer"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="UKXwIXp7V8Q"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/UKXwIXp7V8Q/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Mod Minecarf trên điên thoại"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
+<%--                    <jsp:include page="video.jsp">--%>
+<%--                        <jsp:param name="id" value="lGzH8YxFOJE"/>--%>
+<%--                        <jsp:param name="thumbnail" value="https://i.ytimg.com/vi/lGzH8YxFOJE/maxresdefault.jpg"/>--%>
+<%--                        <jsp:param name="duration" value="23:22"/>--%>
+<%--                        <jsp:param name="title" value="Hack hide Online Mod mEnu"/>--%>
+<%--                        <jsp:param name="user" value="Black Undo"/>--%>
+<%--                        <jsp:param name="view" value="330,534"/>--%>
+<%--                        <jsp:param name="date" value="26/11/2003"/>--%>
+<%--                    </jsp:include>--%>
                 </div>
             </div>
             <br><br>
@@ -141,9 +154,7 @@
                     <nav class="showing_nav">
                         <ul class="pagination">
                             <li>
-                                <a href="#"
-                                   data-load="?link1=videos&page={{TYPE}}&page_id=1<?php echo($pt->page == 'category' && !empty($_GET['id']) ? '&id='.$_GET['id'] : '')  ?><?php echo($pt->page == 'category' && !empty($_GET['id']) && !empty($_GET['sub_id']) ? '&sub_id='.$_GET['sub_id'] : '')  ?><?php echo($pt->page == 'top' && !empty($pt->cat_type) && $pt->cat_type != 'all_time' ? '&type='.$pt->cat_type : '')  ?><?php echo($pt->stock_link) ?>"
-                                   class="waves-effect" title='First Page'>
+                                <a href="/home?p=1" class="waves-effect" title='First Page'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                          class="feather feather-chevrons-left">
@@ -153,9 +164,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
-                                   data-load="?link1=videos&page={{TYPE}}&page_id=<?php echo($pt->page_number - 1) ?><?php echo($pt->page == 'category' && !empty($_GET['id']) ? '&id='.$_GET['id'] : '')  ?><?php echo($pt->page == 'category' && !empty($_GET['id']) && !empty($_GET['sub_id']) ? '&sub_id='.$_GET['sub_id'] : '')  ?><?php echo($pt->page == 'top' && !empty($pt->cat_type) && $pt->cat_type != 'all_time' ? '&type='.$pt->cat_type : '')  ?><?php echo($pt->stock_link) ?>"
-                                   class="waves-effect" title='Previous Page'>
+                                <a href="/home?p=${CurrentPage-1}" class="waves-effect" title='Previous Page'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                          class="feather feather-chevron-left">
@@ -163,14 +172,13 @@
                                     </svg>
                                 </a>
                             </li>
-                            <li class="<?php echo ($pt->page_number == $i) ? 'active' : ''; ?>"><a href="#"
-                                                                                                   data-load="?link1=videos&page={{TYPE}}&page_id=<?php echo($i) ?><?php echo($pt->page == 'category' && !empty($_GET['id']) ? '&id='.$_GET['id'] : '')  ?><?php echo($pt->page == 'category' && !empty($_GET['id']) && !empty($_GET['sub_id']) ? '&sub_id='.$_GET['sub_id'] : '')  ?><?php echo($pt->page == 'top' && !empty($pt->cat_type) && $pt->cat_type != 'all_time' ? '&type='.$pt->cat_type : '')  ?><?php echo($pt->stock_link) ?>"
-                                                                                                   class="waves-effect">
-                            </a></li>
-                            <li>
-                                <a href="#"
-                                   data-load="?link1=videos&page={{TYPE}}&page_id=<?php echo($pt->page_number + 1) ?><?php echo($pt->page == 'category' && !empty($_GET['id']) ? '&id='.$_GET['id'] : '')  ?><?php echo($pt->page == 'category' && !empty($_GET['id']) && !empty($_GET['sub_id']) ? '&sub_id='.$_GET['sub_id'] : '')  ?><?php echo($pt->page == 'top' && !empty($pt->cat_type) && $pt->cat_type != 'all_time' ? '&type='.$pt->cat_type : '')  ?><?php echo($pt->stock_link) ?>"
-                                   class="waves-effect" title="Next Page">
+                            <c:forEach varStatus="i" begin="1" end="${maxPage}">
+                                <li class="${currentPage == i.index ? 'active' : ''}">
+                                    <a href="/home?p=${i.index}" class="waves-effect">${i.index}</a></li>
+                                <li>
+                            </c:forEach>
+
+                                <a href="/home?p=${currentPage+1}" class="waves-effect" title="Next Page">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                          class="feather feather-chevron-right">
@@ -179,9 +187,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="#"
-                                   data-load="?link1=videos&page={{TYPE}}&page_id=<?php echo($pt->total_pages) ?><?php echo($pt->page == 'category' && !empty($_GET['id']) ? '&id='.$_GET['id'] : '')  ?><?php echo($pt->page == 'category' && !empty($_GET['id']) && !empty($_GET['sub_id']) ? '&sub_id='.$_GET['sub_id'] : '')  ?><?php echo($pt->page == 'top' && !empty($pt->cat_type) && $pt->cat_type != 'all_time' ? '&type='.$pt->cat_type : '')  ?><?php echo($pt->stock_link) ?>"
-                                   class="waves-effect" title='Last Page'>
+                                <a href="/home?p=${maxPage}" class="waves-effect" title='Last Page'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                                          class="feather feather-chevrons-right">
@@ -340,6 +346,7 @@
         });
     });
 </script>
+
 
 </body>
 

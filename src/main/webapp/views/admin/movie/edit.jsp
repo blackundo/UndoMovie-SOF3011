@@ -92,9 +92,16 @@
                 <div class="row">
                     <div class="col">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" name="date" id="date" placeholder="date"
+                            <input type="date" class="form-control" name="date" id="date" placeholder="date"
                                    value="${movie.date}">
                             <label for="date">Date</label>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" name="link" id="link" placeholder="link"
+                                   value="${movie.link}">
+                            <label for="link">Link</label>
                         </div>
                     </div>
                 </div>

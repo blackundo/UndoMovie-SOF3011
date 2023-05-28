@@ -9,8 +9,8 @@
 <div class="related-video-wrapper">
   <div class="ra-thumb">
     <a href="#">
-      <img src="https://i.ytimg.com/vi/a_MPYVrx5-w/maxresdefault.jpg"
-           alt="${param.title-related}">
+      <img src="${param.thumbnailrelated}"
+           alt="${param.titlerelated}">
       <div class="play_hover_btn" onmouseenter="show_gif(this,'')"
            onmouseleave="hide_gif(this)">
         <svg xmlns="http://www.w3.org/2000/svg" class="feather" width="24" height="24"
@@ -22,7 +22,7 @@
     </a>
   </div>
   <div class="ra-title">
-    <div class="video-title"><a href="#"> Video hướng dẫn làm lab 1</a></div>
+    <div class="video-title"><a href="#"> ${param.titlerelated}</a></div>
     <div class="video-publisher">Black Undo</div>
     <div class="video-publisher">12 Views <span class="middot">·</span> 26/11/2003</div>
     <div class="video-category"><a

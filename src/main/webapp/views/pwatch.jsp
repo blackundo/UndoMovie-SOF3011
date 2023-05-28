@@ -6,15 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: blackundo
-  Date: 26/03/2023
-  Time: 08:10
-  To change this template use File | Settings | File Templates.
---%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://java.sun.com/jstl/fmt_rt" prefix="fmt" %>
+<%@ include file="/commons/taglib.jsp" %>
+
 <html>
 <head>
   <title>Title</title>

@@ -1,5 +1,8 @@
 package edu.poly.asmjava4final.controller;
 
+import com.timgroup.jgravatar.Gravatar;
+import com.timgroup.jgravatar.GravatarDefaultImage;
+import com.timgroup.jgravatar.GravatarRating;
 import edu.poly.asmjava4final.dto.MovieDTO;
 import edu.poly.asmjava4final.dto.UserDTO;
 import edu.poly.asmjava4final.service.MovieService;
@@ -11,6 +14,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
+import java.util.Collections;
 import java.util.List;
 
 @WebServlet(urlPatterns = { "/home", "/info", "/login", "/logout", "/search", "/block" })
@@ -20,6 +24,8 @@ public class HomeServlet extends HttpServlet {
     private UserService userService;
     @Inject
     private MovieService movieService;
+    private static final int VIDEO_MAX_PAGE_SIZE = 4;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
@@ -30,7 +36,7 @@ public class HomeServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher(view);
             rd.forward(request, response);
         } else if (uri.contains("login")) {
-            view = "/views/login.jsp";
+            view = "/views/index.jsp";
             RequestDispatcher rd = request.getRequestDispatcher(view);
             rd.forward(request, response);
         } else if (uri.contains("logout")) {
@@ -64,12 +70,34 @@ public class HomeServlet extends HttpServlet {
             RequestDispatcher rd = request.getRequestDispatcher(view);
             rd.forward(request, response);
         } else {
+            List<MovieDTO> countMovie = movieService.findAll();
+            int maxPage = (int) Math.ceil(countMovie.size() / (double) VIDEO_MAX_PAGE_SIZE);
+            request.setAttribute("maxPage", maxPage);
+
+            List<MovieDTO> movies;
+
+            String pageNumber = request.getParameter("p");
+            if (pageNumber == null){
+                movies = movieService.findAll(1, VIDEO_MAX_PAGE_SIZE);
+                request.setAttribute("CurrentPage",1);
+            }else {
+                movies = movieService.findAll(Integer.valueOf(pageNumber), VIDEO_MAX_PAGE_SIZE);
+                request.setAttribute("CurrentPage", pageNumber);
+            }
+
+
 //            List<MovieDTO> movies = movieService.findAll();
-//            Collections.reverse(movies);
-//            request.setAttribute("movies", movies);
+            Collections.reverse(movies);
+            request.setAttribute("movies", movies);
             UserDTO user = (UserDTO) SessionUtil.getInstance().getValue(request, "USER");
             if (user != null) {
                 user = userService.findOne(user.getId());
+                Gravatar gravatar = new Gravatar();
+                gravatar.setSize(50);
+                gravatar.setRating(GravatarRating.GENERAL_AUDIENCES);
+                gravatar.setDefaultImage(GravatarDefaultImage.IDENTICON);
+                String urlAvt = gravatar.getUrl(user.getEmail());
+                request.setAttribute("avt", urlAvt);
                 request.setAttribute("user", user);
             }
             view = "/views/index.jsp";

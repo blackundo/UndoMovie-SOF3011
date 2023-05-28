@@ -9,6 +9,7 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
     private String title;
     private String description;
 
+    private String link;
     private Date date;
     private Integer viewCount;
     private Integer likeCount;
@@ -17,6 +18,15 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
     private Set<CategoryDTO> categories = new HashSet<CategoryDTO>();
     private Set<UserDTO> users = new HashSet<UserDTO>();
     private String[] idsCategory;
+
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getTitle() {
         return title;
@@ -97,7 +107,7 @@ public class MovieDTO extends AbstractDTO<MovieDTO>{
 
     @Override
     public String toString() {
-        return "MovieDTO [title=" + title + ", description=" + description + ", date="
+        return "MovieDTO [title=" + title + ", description=" + description + ", link=" + link + ", date="
                 + date + ", poster=" + poster + ", viewCount=" + viewCount + ", likeCount=" + likeCount + ", categories=" + categories + ", users=" + users
                 + Arrays.toString(idsCategory) + "]";
     }

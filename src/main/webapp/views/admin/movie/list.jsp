@@ -23,11 +23,12 @@
             <th class="text-center">#</th>
             <th></th>
             <th>Poster</th>
-            <th>Title</th>
-            <th>Categories</th>
+            <th>Tiêu đề</th>
+            <th>Danh mục</th>
             <th>DATE</th>
             <th>View</th>
             <th>Like</th>
+            <th>LinkYT</th>
             <th>ID</th>
             <th>Description</th>
         </tr>
@@ -50,6 +51,7 @@
                 <td>
                     <img src="${i.poster}" height="100" alt="">
                 </td>
+                <td>${i.title}</td>
                 <td>
                     <c:forEach items="${i.categories}" var="cate">
                         ${cate.name}<br>
@@ -64,6 +66,7 @@
                 	<c:if test="${i.likeCount >= 1000}">${(i.likeCount - i.likeCount % 1000) / 1000 + (i.likeCount % 1000 - i.likeCount % 100) / 1000} K</c:if>
                     <c:if test="${i.likeCount < 1000 }">${i.likeCount}</c:if> 
                 </td>
+                <td>${i.link}</td>
                 <td>${i.id}</td>
                 <td>${i.description}</td>
             </tr>

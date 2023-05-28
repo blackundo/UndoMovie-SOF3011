@@ -10,7 +10,7 @@
     <div class="video-latest-list video-wrapper" data-id="<?php echo($video->id) ?>"
          data-views="<?php echo($video->views) ?>">
         <div class="video-thumb">
-            <a href="/watch?data=${param.id}">
+            <a href="/movie?id=${param.id}">
                 <img
                         src="${param.thumbnail}"
                         alt="<?php echo($video->title) ?>">
